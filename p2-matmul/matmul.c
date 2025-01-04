@@ -6,11 +6,18 @@
 #define DIM 3
 #endif
 
+
 /// @brief Reads the matrix from a space separated text file.
 /// @param filename Path to the file
 /// @param A 2D array of dimension DIMxDIM defined by the DIM macro.
 void read_mat(char *filename, float A[DIM][DIM])
 {
+    FILE *fp = fopen(filename,"r");
+    for(int i = 0; i < DIM;i++){
+        for(int j = 0; j < DIM; j++){
+            A[i][j] = fgetc(fp);
+        }
+    }
 }
 
 /**
@@ -24,7 +31,19 @@ void read_mat(char *filename, float A[DIM][DIM])
  */
 void print_mat(float A[DIM][DIM])
 {
+    for(int i = 0; i < DIM ; i++){
+        for(int j = 0; j < DIM ; j++){
+            
+            if( j == DIM-1  ){
+                printf("\n");
+            }else{
+                printf("%lf ", A[i][j]);
+            }
+        }
+    }
+    printf("\n");
 }
+
 
 /// @brief Performs the matrix multiplication on Matrix A and B and saves the results to Matrix C
 /// @param A Input Matrix A
