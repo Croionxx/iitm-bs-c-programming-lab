@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <math.h>
 /*
 Note:
   This is an interactive program in which
@@ -11,42 +11,69 @@ Run the below command to compile and run this program.
 
 void toggle_every_kth_room(int *lights, int k)
 {
-  // Code here
+  for(int i = 15-k; 0<= i; i -=k){
+    *lights = (1<<i) ^ *lights;
+  }
 }
 
 void toggle_even_rooms(int *lights)
 {
-  // Use the above function to toggle the even rooms
-  // toggle_every_kth_room(...);
+  for(int i = 14; 0<= i; i -= 2){
+    *lights = (1<<i) ^ *lights;
+  }
 }
 
 int get_mask()
 {
   // Read the input till -1 and create the mask
+  int a;
+  int mask = 0;
+  
+
+  while(1){
+    scanf("%d", &a);
+    if (a == -1){
+      break;
+    }else{
+      mask = mask | (1 << (16-a));
+    }
+  }
+  return mask;
+  
 }
 
 void turn_on_lights(int *lights)
 {
   // apply mask to lights to turn on the particular lights
   int mask = get_mask();
+  *lights = *lights | mask;
 }
 
 void turn_off_lights(int *lights)
 {
   // apply mask to lights to turn off the particular lights
   int mask = get_mask();
+  *lights = *lights ^ (mask);
 }
 
 int count_lights(int lights)
 {
-  // Code here
+  int count = 0;
+  for (int i = 0; i < 16; i++) {
+    if ((lights >> i) & 1) {
+      count++;
+    }
+  }
+  return count;
 }
 
 void print_bin(int a)
 {
+
   for (int i = 15; i >= 0; i--)
   {
-    printf("%d", (a >> i) & 1);
+    printf("%d", (a >> i) & 1 );
+
     if (i % 4 == 0)
       printf(" ");
   }
