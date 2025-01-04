@@ -12,9 +12,9 @@ void string_copy(char s[], char d[]){
 
 int main(){
     char src[80] = "red";
-    char dst[80] = "orange";
+    char dst[80] = "";
     string_copy(src, dst);
-    printf("%s", dst);
+    printf("%s\n", dst);
     return 0;
 }
 

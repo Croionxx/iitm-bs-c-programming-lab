@@ -7,7 +7,7 @@ int prime_bad(int n)
     }
     else
     {
-        for (int i=2; i*i < n; i++)
+        for (int i=2; i*i <= n; i++) //changed operator < to <=
         {
             if (n%i == 0)
             {

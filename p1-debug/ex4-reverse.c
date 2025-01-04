@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-
 void sreverse(char* s){
     int n = strlen(s);
-    for(int i=0;i<n;i++){ // range should be n/2
-        s[i] = s[n-1]; // should use a temp swap swap(s[i], s[i-n-1])
+    for(int i=0;i <n/2;i++){ // range should be n/2
+        char temp = s[i];
+        s[i] = s[n - i - 1];
+        s[n - i - 1] = temp; // should use a temp swap swap(s[i], s[i-n-1])
     }
 }
 
