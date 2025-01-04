@@ -16,6 +16,7 @@ void read_mat(char *filename, float A[DIM][DIM])
     for(int i = 0; i < DIM;i++){
         for(int j = 0; j < DIM; j++){
             A[i][j] = fgetc(fp);
+            fscanf(fp, "%f", &A[i][j]);
         }
     }
 }
@@ -34,14 +35,11 @@ void print_mat(float A[DIM][DIM])
     for(int i = 0; i < DIM ; i++){
         for(int j = 0; j < DIM ; j++){
             
-            if( j == DIM-1  ){
-                printf("\n");
-            }else{
-                printf("%lf ", A[i][j]);
-            }
+            printf("%lf ", A[i][j]);
         }
+        printf("\n");
     }
-    printf("\n");
+    
 }
 
 
